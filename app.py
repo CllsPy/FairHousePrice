@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(page_title="Estimativa de Preço", layout="centered")
 
@@ -21,3 +22,8 @@ with col2:
 if st.button("Calcular"):
     pred = model.predict([[area_m2, num_quartos, num_banheiros, idade_anos]])[0]
     st.metric("Preço estimado", f"{pred:,.2f}")
+
+
+st.title("Dataset Usado")
+data = pd.read_csv("house.csv")
+st.write(data)
